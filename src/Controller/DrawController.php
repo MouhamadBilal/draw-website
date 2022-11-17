@@ -12,7 +12,7 @@ class DrawController extends AbstractController
     public function index(): Response
     {
         return $this->render('draw/index.html.twig', [
-            'controller_name' => 'DrawController',
+            'controller_name' => 'Draw-Website',
         ]);
     }
 }
