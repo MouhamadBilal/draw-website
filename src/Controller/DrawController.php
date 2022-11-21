@@ -9,29 +9,27 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use App\Entity\Draw;
 use App\Form\DrawFormType;
+use Doctrine\ORM;
 
 use Twig\Environment;
 
 class DrawController extends AbstractController
 {
     #[Route('/draw', name: 'app_draw')]
-    public function index(): Response
+    public function index(Environment $twig ): Response
     {
-        return $this->render('draw/index.html.twig', [
-            'controller_name' => 'Draw-Website',
 
-        ]);
 
-    }
 
-    public function show(Request $request, DrawRepository $drawRepository, Environment $twig ): Response
-    {
         $draw = new Draw();
         $form = $this->createForm(DrawFormType::class, $draw);
 
         return new Response($twig->render('draw/index.html.twig', [
             'draw' => $draw,
+            'controller_name' => 'Draw-Website',
             'draw_form' => $form->createView()
         ]));
+
     }
+
 }
