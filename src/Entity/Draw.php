@@ -15,21 +15,21 @@ class Draw
     private ?int $id = null;
 
     #[ORM\Column(type: Types::BLOB)]
-    private $photo = null;
+    private $post = null;
 
     public function getId(): ?int
     {
         return $this->id;
     }
 
-    public function getPhoto()
+    public function getPost()
     {
-        return $this->photo;
+        return $this->post;
     }
 
-    public function setPhoto($photo): self
+    public function setPost($post): self
     {
-        $this->photo = $photo;
+        $this->post = $post;
 
         return $this;
     }
