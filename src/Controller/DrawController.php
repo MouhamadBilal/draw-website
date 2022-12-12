@@ -61,15 +61,13 @@ class DrawController extends AbstractController
 
 
 
-            return $this->redirectToRoute('app_draw');
+            return $this->redirectToRoute('publication');
         }
 
         return new Response($twig->render('draw/index.html.twig', [
             'draw' => $draw,
             'controller_name' => 'Draw-Website',
             'draw_form' => $form->createView(),
-            'posts'=> $posts
-
 
         ]));
 
@@ -84,7 +82,6 @@ class DrawController extends AbstractController
         $draws = $drawRepository->findAll();
         return new Response($twig->render('draw/show.html.twig', [
             'draws'=>$draws
-
 
         ]));
     }
