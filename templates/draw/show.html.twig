@@ -1,10 +1,12 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    coucou
+
 
     {% for draw  in draws  %}
-        <img src={{ asset("./public/uploads/draws/" ~ draw.post) }}/>
+        <img src="{{ asset( 'uploads/draws/' ~ draw.post) }}"/>
     {% endfor %}
+
+
 
 {% endblock %}
