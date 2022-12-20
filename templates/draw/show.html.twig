@@ -2,11 +2,11 @@
 
 {% block body %}
 
-    {% for draw  in draws %}
-        <h1>
-            {{ dump(draw.post) }}
-            <img src="{{ asset('uploads/draws/' ~ draw.post) }}"/>
-        </h1>
+    {% for draw  in draws  %}
+        <img src="{{ asset( 'uploads/draws/' ~ draw.post) }}"/>
+
     {% endfor %}
+
+
 
 {% endblock %}

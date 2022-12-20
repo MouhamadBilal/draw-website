@@ -17,12 +17,9 @@ class DrawCrudController extends AbstractCrudController
     public function configureFields(string $pageName): iterable
     {
         return [
-            ImageField::new ("post")
-                ->setBasePath("uploads/draws")
-                ->setUploadDir('public/uploads/draws')
+            ImageField::new('post')
+            ->setUploadDir('public/uploads/draws')
+            ->setBasePath('uploads/draws')
         ];
     }
-
-
-
 }
