@@ -50,7 +50,7 @@ class DrawController extends AbstractController
             $this->entityManager->persist($draw);
             $this->entityManager->flush();
 
-            return $this->redirectToRoute('publication');
+            return $this->redirectToRoute('published_draws');
         }
 
         return new Response($twig->render('draw/index.html.twig', [
@@ -66,7 +66,6 @@ class DrawController extends AbstractController
         $draws = $drawRepository->findAll();
         return new Response($twig->render('draw/show.html.twig', [
             'draws' => $draws
-
         ]));
     }
 

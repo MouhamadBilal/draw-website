@@ -30,7 +30,7 @@ class Draw
 
     public function setPost($post): self
     {
-        $this->post = $post;
+        $this->post= $post;
 
         return $this;
     }
