@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Form;
+use SebastianBergmann\CodeCoverage\Report\Text;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
 use App\Entity\Draw;
 use Symfony\Component\Form\AbstractType;
@@ -22,6 +23,9 @@ class DrawFormType extends AbstractType
                             new Image(['maxSize' => '1024k'])
                         ],
                     ])
+            ->add('name',null,[
+            'label' =>'your name'])
+            ->add('description')
             ->add('Submit', SubmitType::class
 
             )
