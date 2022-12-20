@@ -69,8 +69,6 @@ class DrawController extends AbstractController
             'controller_name' => 'Draw-Website',
             'draw_form' => $form->createView(),
 
-
-
         ]));
 
 
@@ -84,7 +82,6 @@ class DrawController extends AbstractController
         $draws = $drawRepository->findAll();
         return new Response($twig->render('draw/show.html.twig', [
             'draws'=>$draws
-
 
         ]));
     }
