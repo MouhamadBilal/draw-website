@@ -2,11 +2,8 @@
 
 {% block body %}
 
-    {% for draw  in draws  %}
-        <img src="{{ asset( 'uploads/draws/' ~ draw.post) }}"/>
-
+    {% for draw  in draws %}
+        <img src="{{ asset( 'uploads/draws/' ~ draw.post) }}" height="150"/>
     {% endfor %}
-
-
 
 {% endblock %}
