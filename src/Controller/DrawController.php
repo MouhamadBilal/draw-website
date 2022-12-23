@@ -11,7 +11,9 @@ use Symfony\Component\Routing\Annotation\Route;
 use App\Entity\Draw;
 use App\Form\DrawFormType;
 use Doctrine\ORM\EntityManagerInterface;
-
+use Symfony\Component\Filesystem\Exception\IOExceptionInterface;
+use Symfony\Component\Filesystem\Filesystem;
+use Symfony\Component\Filesystem\Path;
 
 use Twig\Environment;
 
@@ -50,6 +52,7 @@ class DrawController extends AbstractController
             $this->entityManager->persist($draw);
             $this->entityManager->flush();
 
+
             return $this->redirectToRoute('published_draws');
         }
 
@@ -63,10 +66,35 @@ class DrawController extends AbstractController
     #[Route('/', name: 'published_draws')]
     public function listPublishedDraws(Environment $twig, DrawRepository $drawRepository)
     {
+
         $draws = $drawRepository->findAll();
+
+        //$this->delete($draw);
         return new Response($twig->render('draw/show.html.twig', [
             'draws' => $draws
         ]));
     }
+
+    #[Route('/delete', name: 'delete')]
+    public function delete(Request $req, DrawRepository $dr)
+    {
+        $draw = $dr->find($req->query->get("id"));
+        if(!$draw)
+            die;
+
+        $fileSystem = new Filesystem();
+
+        $filePath = $req->getBasePath() . '/uploads/draws/' . $draw->getPost();
+        if(file_exists($filePath))
+        {
+            dd($filePath);
+        }
+        $fileSystem->remove($filePath.$draw);
+
+        return new Response('je sais pas quoi répondre je suis CIRCONSPECT');
+    }
+
+
+
 
 }
